@@ -9,7 +9,7 @@ void Domain::addDomainFunction(bool (&domainFunction)(const double &, const doub
     domainFunctions.emplace_back(&domainFunction);
 }
 
-bool Domain::belongs(const double &x, const double &y)
+bool Domain::contains(const double &x, const double &y)
 {
     for (auto &domainFunction : domainFunctions) {
         if (!domainFunction(x,y)) return false;

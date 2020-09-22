@@ -26,3 +26,8 @@ double BoundingRect::getXSize()
 {
     return size[0][1]-size[0][0];
 }
+
+double BoundingRect::getYSize()
+{
+    return size[1][1]-size[1][0];
+}

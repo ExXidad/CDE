@@ -17,7 +17,7 @@ public:
 
     void addDomainFunction(bool(&domainFunction)(const double &,const double &));
 
-    bool belongs(const double &x, const double &y);
+    bool contains(const double &x, const double &y);
 };
 
 

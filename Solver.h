@@ -7,22 +7,37 @@
 
 #include <vector>
 #include <iostream>
+#include <fstream>
 
 #include "Domain.h"
 #include "BoundingRect.h"
 
+
+enum solveMethods
+{
+    LV, CIR
+};
+
 class Solver
 {
 private:
-    std::vector<std::vector<double>> u;
+    std::vector<std::vector<std::vector<double>>> xyU;
+    std::vector<std::vector<bool>> domainPointQ;
+
     int m, n;
 
-    double c, h, t, dt, tMax;
+    double c, h,  dt, tMax;
+
+    int stepsElapsed = 0;
+    double t = 0;
+
+private:
+    void save();
 
 public:
-    Solver(Domain &domain, BoundingRect &boundingRect, double(&icf)(const double &, const double &),
-           const double &h);
+    Solver(Domain &domain, BoundingRect &boundingRect, double(&icf)(const double &, const double &), const double &h);
 
+    void solve(solveMethods method, const double &c, const double &tMax, const int &saveStep);
 };
 
 
